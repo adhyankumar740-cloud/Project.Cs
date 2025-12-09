@@ -1,6 +1,7 @@
-Create DATABASE Taj_hotel;
+Create DATABASE taj_hotel;
 
-use Taj_hotel;
+use taj_hotel;
+
 -- 1. Create rooms table
 CREATE TABLE rooms (
     RoomNum INT PRIMARY KEY,
