@@ -14,7 +14,7 @@ Whether you’re visiting for a weekend get away or a longer stay, we promise th
 
 print('''
 +++++++++++++++++++++++++++++++++++++++++++
-  Welcome to TAJ HOTEL System
+  Welcome to TAJ HOTEL 
   
 +++++++++++++++++++++++++++++++++++++++++++
 ''')
@@ -23,8 +23,8 @@ print('-------------------------------------------------')
 print('Press 1- Lodging Room')
 print('Press 2- Restaurant')
 print('Press 3- About Hotel')
-print('Press 4- Register new user') # New Option Added
-print('Press 5- Exit') # Exit option index updated
+print('Press 4- Register new user') 
+print('Press 5- Exit') 
 print('-------------------------------------------------')
 
 main_choice = int(input("Enter your choice: "))
@@ -44,7 +44,7 @@ if main_choice == 1:
         
         # Room Details Logic
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
         co = mydb.cursor()
         co.execute('select * from rooms')
         room_records = co.fetchall()
@@ -59,7 +59,7 @@ if main_choice == 1:
     
         if room_details_choice == 1:
             print('-------------------------------------------------')
-            mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
+            mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
             co = mydb.cursor()
             co.execute('select * from roombooking ')
             booking_records = co.fetchall()
@@ -107,7 +107,7 @@ Please choose another room. ''')
 
     elif lodging_choice == 2:
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
         co = mydb.cursor()
         co.execute('select * from roombooking ')
         booking_records = co.fetchall()
@@ -138,7 +138,6 @@ Please choose another room. ''')
                     values = (room_num_input, booking_id, 0, user_name, address, phone_num, check_in_date, check_out_date, gender)
                     co.execute(sql_insert, values)
                     
-                    # SQL Injection Fix (2/4): UPDATE query for rooms status (Duplicated)
                     sql_update = "UPDATE rooms SET Status = %s WHERE RoomNum = %s"
                     values = ('Occupied', room_num_input)
                     co.execute(sql_update, values)
@@ -167,7 +166,7 @@ elif main_choice == 2:
     if restaurant_choice == 1:
         # Menu Logic
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
         co = mydb.cursor()
         print("*****MENU*****")
         print('item_number, item_name, price, category, availability')
@@ -181,7 +180,7 @@ elif main_choice == 2:
     elif restaurant_choice == 2:
         # Order Logic
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
         co = mydb.cursor()
 
         table_num = int(input("Enter your Table Number: "))
@@ -224,7 +223,7 @@ elif main_choice == 4:
     print('-------------------------------------------------')
     print('*** New User Registration ***')
     
-    mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
+    mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
     co = mydb.cursor()
 
     # Get the next user ID
