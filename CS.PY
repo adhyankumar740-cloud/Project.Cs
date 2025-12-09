@@ -44,7 +44,7 @@ if main_choice == 1:
         
         # Room Details Logic
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="aiwcaoe", database="taj_hotel")
         co = mydb.cursor()
         co.execute('select * from rooms')
         room_records = co.fetchall()
@@ -59,7 +59,7 @@ if main_choice == 1:
     
         if room_details_choice == 1:
             print('-------------------------------------------------')
-            mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
+            mydb = sqltr.connect(host="localhost", user="root", password="aiwcaoe", database="taj_hotel")
             co = mydb.cursor()
             co.execute('select * from roombooking ')
             booking_records = co.fetchall()
@@ -107,7 +107,7 @@ Please choose another room. ''')
 
     elif lodging_choice == 2:
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="aiwcaoe", database="taj_hotel")
         co = mydb.cursor()
         co.execute('select * from roombooking ')
         booking_records = co.fetchall()
@@ -166,7 +166,7 @@ elif main_choice == 2:
     if restaurant_choice == 1:
         # Menu Logic
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="aiwcaoe", database="taj_hotel")
         co = mydb.cursor()
         print("*****MENU*****")
         print('item_number, item_name, price, category, availability')
@@ -180,7 +180,7 @@ elif main_choice == 2:
     elif restaurant_choice == 2:
         # Order Logic
         print('-------------------------------------------------')
-        mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
+        mydb = sqltr.connect(host="localhost", user="root", password="aiwcaoe", database="taj_hotel")
         co = mydb.cursor()
 
         table_num = int(input("Enter your Table Number: "))
@@ -223,7 +223,7 @@ elif main_choice == 4:
     print('-------------------------------------------------')
     print('*** New User Registration ***')
     
-    mydb = sqltr.connect(host="localhost", user="root", password="Admin", database="taj_hotel")
+    mydb = sqltr.connect(host="localhost", user="root", password="aiwcaoe", database="taj_hotel")
     co = mydb.cursor()
 
     # Get the next user ID
