@@ -11,7 +11,6 @@ From sunrise to sunset, TAJ HOTEL offers a serene escape that blends the comfort
 Come experience an environment that nurtures your soul and rejuvenates your spirit.
 Whether you’re visiting for a weekend get away or a longer stay, we promise that every moment spent here will be a tranquil retreat from the everyday hustle.
 '''
-
 print('''
 +++++++++++++++++++++++++++++++++++++++++++
   Welcome to TAJ HOTEL System
@@ -28,10 +27,6 @@ print('-------------------------------------------------')
 
 main_choice = int(input("Enter your choice: "))
 
-# =====================================================================================
-#                                  LODGING SECTION
-# =====================================================================================
-
 if main_choice == 1:
 
     print('-------------------------------------------------')
@@ -43,7 +38,6 @@ if main_choice == 1:
 
     lodging_choice = int(input("Enter your choice: "))
 
-    # ======================== ROOM DETAILS SECTION ============================
     if lodging_choice == 1:
 
         print('-------------------------------------------------')
@@ -61,7 +55,6 @@ if main_choice == 1:
         print('Press 2- Skip')
         room_details_choice = int(input("Enter your choice: "))
 
-        # =================== BOOKING FROM ROOM DETAILS ========================
         if room_details_choice == 1:
 
             print('-------------------------------------------------')
@@ -112,7 +105,6 @@ if main_choice == 1:
             mydb.commit()
             print('-------------------------------------------------')
 
-    # ======================== DIRECT ROOM BOOKING ============================
     elif lodging_choice == 2:
 
         print('-------------------------------------------------')
@@ -165,10 +157,6 @@ if main_choice == 1:
         mydb.commit()
         print('-------------------------------------------------')
 
-# =====================================================================================
-#                                  RESTAURANT SECTION
-# =====================================================================================
-
 elif main_choice == 2:
 
     print('Welcome to our restaurant')
@@ -178,7 +166,6 @@ elif main_choice == 2:
 
     restaurant_choice = int(input('Enter your choice: '))
 
-    # ======================== SHOW MENU ============================
     if restaurant_choice == 1:
         print('-------------------------------------------------')
         mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
@@ -227,16 +214,9 @@ elif main_choice == 2:
         print("Your order has been placed. Total Amount:", total_amount)
         print('-------------------------------------------------')
 
-# =====================================================================================
-#                                  ABOUT HOTEL
-# =====================================================================================
 
 elif main_choice == 3:
     print(HOTEL_ABOUT_INFO)
-
-# =====================================================================================
-#                                  USER REGISTRATION
-# =====================================================================================
 
 elif main_choice == 4:
 
@@ -268,11 +248,6 @@ elif main_choice == 4:
 
     print("User Registered Successfully! Your User ID is:", user_id)
     print('-------------------------------------------------')
-
-# =====================================================================================
-#                                  EXIT
-# =====================================================================================
-
 elif main_choice == 5:
     pass
 
