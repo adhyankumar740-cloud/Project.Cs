@@ -58,7 +58,6 @@ if main_choice == 1:
         room_details_choice = int(input("Enter your choice: "))
     
         if room_details_choice == 1:
-            # Room Booking Logic (from Room Details Menu)
             print('-------------------------------------------------')
             mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
             co = mydb.cursor()
@@ -85,13 +84,11 @@ if main_choice == 1:
                 
                 if room_record[0] == room_num_input:
                     
-                    if room_record[1].upper() == 'VACANT': 
-                        # SQL Injection Fix (1/4): INSERT query for roombooking
+                    if room_record[1].upper() == 'VACANT':
                         sql_insert = "INSERT INTO roombooking VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
                         values = (room_num_input, booking_id, 0, user_name, address, phone_num, check_in_date, check_out_date, gender)
                         co.execute(sql_insert, values)
                         
-                        # SQL Injection Fix (2/4): UPDATE query for rooms status
                         sql_update = "UPDATE rooms SET Status = %s WHERE RoomNum = %s"
                         values = ('Occupied', room_num_input)
                         co.execute(sql_update, values)
@@ -109,7 +106,6 @@ Please choose another room. ''')
             print('-------------------------------------------------')
 
     elif lodging_choice == 2:
-        # Room Booking Logic (Direct Booking Menu)
         print('-------------------------------------------------')
         mydb = sqltr.connect(host="localhost", user="root", password="gouravbhai@12", database="taj_hotel")
         co = mydb.cursor()
@@ -137,7 +133,7 @@ Please choose another room. ''')
             if room_record[0] == room_num_input:
                 
                 if room_record[1].upper() == 'VACANT': 
-                    # SQL Injection Fix (1/4): INSERT query for roombooking (Duplicated)
+                    
                     sql_insert = "INSERT INTO roombooking VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
                     values = (room_num_input, booking_id, 0, user_name, address, phone_num, check_in_date, check_out_date, gender)
                     co.execute(sql_insert, values)
@@ -213,7 +209,6 @@ elif main_choice == 2:
                     total_amount = total_amount + subtotal
                     break
                     
-        # SQL Injection Fix (3/4): INSERT query for order_info
         sql_insert = "INSERT INTO order_info VALUES (%s, %s, %s, %s)"
         values = (order_num, 0, table_num, total_amount)
         co.execute(sql_insert, values)
@@ -225,7 +220,7 @@ elif main_choice == 2:
 elif main_choice == 3:
     print(HOTEL_ABOUT_INFO)
     
-elif main_choice == 4: # New User Registration Logic (without try/except)
+elif main_choice == 4: 
     print('-------------------------------------------------')
     print('*** New User Registration ***')
     
@@ -233,38 +228,30 @@ elif main_choice == 4: # New User Registration Logic (without try/except)
     co = mydb.cursor()
 
     # Get the next user ID
-    co.execute('select count(*) from user_info') # Assuming 'user_info' table exists
+    co.execute('select count(*) from user_info') 
     user_count = co.fetchone()[0]
     user_id = user_count + 1
     
     print("Your User ID will be:", user_id)
     
     user_name = input("Enter User Name: ")
-    password = input("Enter Password: ") # Consider hashing the password in a real system
+    password = input("Enter Password: ") 
     full_name = input("Enter Full Name: ")
     address = input("Enter Address: ")
-    # Input validation is important; added type casting for phone_num
-    try:
-        phone_num = int(input("Enter Phone Number:"))
-    except ValueError:
-        print("Invalid phone number entered. Setting to 0.")
-        phone_num = 0
-        
+    phone_num = int(input("Enter Phone Number:"))
     email = input("Enter Email: ")
     
-    # SQL Injection Fix (4/4): INSERT query for user_info
-    # Assuming table structure: (user_id, user_name, password, full_name, address, phone_num, email)
     insert_query = "INSERT INTO user_info VALUES (%s, %s, %s, %s, %s, %s, %s)"
     values = (user_id, user_name, password, full_name, address, phone_num, email)
     co.execute(insert_query, values)
     
     mydb.commit()
-    mydb.close() # Close the connection
+    mydb.close() 
     print("User Registered Successfully! Your User ID is:", user_id)
     
     print('-------------------------------------------------')
 
-elif main_choice == 5: # Updated Exit index
+elif main_choice == 5: 
     pass
 
 print('successfully visited')
